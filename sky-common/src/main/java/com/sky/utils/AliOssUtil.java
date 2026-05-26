@@ -22,8 +22,8 @@ public class AliOssUtil {
     /**
      * 文件上传
      *
-     * @param bytes
-     * @param objectName
+     * @param bytes 文件字节数组
+     * @param objectName 对象名称
      * @return
      */
     public String upload(byte[] bytes, String objectName) {
