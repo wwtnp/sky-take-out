@@ -15,6 +15,7 @@ import java.util.List;
 public interface DishMapper {
     /**
      * 根据分类id统计菜品数量
+     *
      * @param categoryId
      * @return 菜品数量
      */
@@ -23,6 +24,7 @@ public interface DishMapper {
 
     /**
      * 新增菜品
+     *
      * @param dish
      */
     @AutoFill(OperationType.INSERT)
@@ -33,6 +35,7 @@ public interface DishMapper {
 
     /**
      * 菜品分页查询
+     *
      * @param dishPageQueryDTO
      * @return 菜品分页查询结果
      */
@@ -40,6 +43,7 @@ public interface DishMapper {
 
     /**
      * 根据id查询菜品
+     *
      * @param id
      * @return 菜品
      */
@@ -48,7 +52,26 @@ public interface DishMapper {
 
     /**
      * 根据id删除菜品
+     *
      * @param ids
      */
     void deleteBatch(List<Long> ids);
+
+    /**
+     * 根据id修改菜品
+     *
+     * @param dish
+     */
+    @AutoFill(OperationType.UPDATE)
+    @Update("update dish set " +
+            "name = #{name}, " +
+            "category_id = #{categoryId}, " +
+            "price = #{price}, " +
+            "image = #{image}, " +
+            "description = #{description}, " +
+            "status = #{status}, " +
+            "update_time = #{updateTime}, " +
+            "update_user = #{updateUser} " +
+            "where id = #{id}")
+    void update(Dish dish);
 }
